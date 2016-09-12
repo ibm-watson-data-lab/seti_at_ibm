@@ -4,13 +4,13 @@ This document serves as an introductory guide to accessing the SETI data availab
 
 There are four parts to working with SETI data
 
-  * [The HTTP API](setigopublic.md)
   * IBM Spark and Object Store services
+  * [The HTTP API](setigopublic.md)
   * The [`ibmseti` python package](https://github.com/ibm-cds-labs/ibmseti)
   * Understanding the data
 
 
-The easiest way to begin will be to create an account on [IBM Bluemix](http://www.ibm.com/cloud-computing/bluemix/) and provision a Spark service and associated Object Store. 
+You must create an account on [IBM Bluemix](http://www.ibm.com/cloud-computing/bluemix/) and provision a Spark service and associated Object Store. 
 
   1. [Sign Up for Bluemix](https://console.ng.bluemix.net/registration/?Target=https%3A%2F%2Fconsole.ng.bluemix.net%2Flogin%3Fstate%3D%2Fhome%2Fonboard)
   2. [Select the Spark Service](https://console.ng.bluemix.net/catalog/services/apache-spark/) from the Catalog
@@ -38,5 +38,5 @@ You may use the links to these notebooks to create new notebooks in your Spark s
 Do this by selecting "New Notebook" in your Spark service, and then provide the URL to 
 these notebooks before you create it. 
 
-Please note the [privacy warning](https://github.com/ibm-cds-labs/ibmseti#privacy-warning) when using the `ibmseti` package. 
+Please read the [privacy warning](https://github.com/ibm-cds-labs/ibmseti#privacy-warning) when using the `ibmseti` package. 
 
