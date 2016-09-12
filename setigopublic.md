@@ -199,9 +199,9 @@ Continuing from the example above
 
 ```python
 ra = r.json()['rows'][0]['ra2000hr']  #19.832 from above query
-dec = r.json()['rows'][0]['dec2000deg'] 46.997 
+dec = r.json()['rows'][0]['dec2000deg'] #46.997 
 
-r = requests.get('https://setigopublic.mybluemix.net/v1/aca/meta/{}/{}'.format(ra, dec)
+r = requests.get('https://setigopublic.mybluemix.net/v1/aca/meta/{}/{}'.format(ra, dec))
 
 print json.dumps(r.json(), indent=1)
 ```
@@ -250,7 +250,7 @@ URL parameter. For example
 
 ```python 
 r = requests.get('https://setigopublic.mybluemix.net/v1/aca/meta/{}/{}?skip=200'.format(ra, dec)
-newrows = r.json()['rows']
+rows = r.json()['rows']
 ```
 
 Searching through the results from this particular example, one thing you'll notice is that while there are 392
@@ -262,15 +262,14 @@ for example), you'll likely corrupt your results.
 An easy way to reorder your results by the raw data file is with a `groupby`. For example
 
 ```python
-rows # list of signalDB rows returned from above
+import itertools
+
 rows = sorted(rows, key=lambda row:row['container'] + '-' + row['objectname'])
 
-grl = []  #a list of (key, [rows])
-for k, g in itertools.groupby(rows, lambda row:row['container'] + '-' + row['objectname']):
-  grl.append((k, list(g))
+#grl is a list of (key, [rows])
+grl = [(k,list(g)) for k,g in itertools.groupby(rows, lambda row:row['container'] + '-' + row['objectname'])]
 
-# OR in Spark
-
+# equivalently in Spark. `sc` is a SparkContext object
 rdd = sc.parallelize(rows)
 rdd = rdd.groupBy(lambda row: row['container'] + '-' + row['objectname']) 
 ```
