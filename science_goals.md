@@ -8,8 +8,7 @@ We are aiming for some bright citizen scientists to make significant contributio
 Have we missed a SETI signal already? The SETI institute is always looking for new a better ways to increase signal detection. 
 
   * Can a ML-based model based on features from spectograms produce a better signal recognition or 
-  better signal-to-noise? There are many possible features to extract that have not yet been explored! There
-  is lots of opportunity here. Combine new features from spectrograms with information from [SignalDB](signaldb.md)
+  better signal-to-noise? Can image recognition / neural nets be used here effectively? There are many possible features to extract that have not yet been explored and lots of opportunity, overall. Combine new features from spectrograms with information from [SignalDB](signaldb.md)
 
   * Does using a different orthonormal basis 
   ([KLT](https://en.wikipedia.org/wiki/Karhunen%E2%80%93Lo%C3%A8ve_theorem)) improve signal detection? 
@@ -29,11 +28,5 @@ An accurate ML model, trained from previously taken data, could provide a better
 for the ATA to make its re-observation decisions. We hope to install a ML model to assist SonATA in its
 real-time signal classification. 
 
-Please submit to us your models!
-
+**[Please submit to us your models!](contact_us.md)**
   
-### Contact Us!
-
-Compelling models constructed by citizen scientists will be considered in future analysis.
-Post your analysis onlne and make contact with us!  todo: need approprate link / email / contact info. 
-
