@@ -2,7 +2,7 @@
 
 | Field        | Description           |
 | :------------- |:--------------|
-| uniqueid   |  ID based on other info                            |
+| uniqueid   |  Unique ID                                         |
 | time       |  Date/Time of observation                          | 
 | acttyp     |  Activity Type: initial or followup                |
 | catalog    |  Target catalog name                               |
@@ -39,12 +39,15 @@ This is the "Activity Type" of the observation. There are a number of possible v
   * target`N`-on
   * target`N`off
   
-for N = 1, 2, 3, 4.  When the ATA makes an initial observation of a candidate signal, the ATA
+for N = 1 - 5. 
+
+When the ATA makes an initial observation of a candidate signal, the ATA
 decides to look again for the signal. This second observation is called 'target1-on'. The ATA 
 then looks *elsewhere*, called target1-off. If a signal is **not** observed in target1-off, 
 the ATA then again looks at the original location. An observation of a candidate signal would 
 then be called target2-on. This happens repeatedly. Each time a potential candidate signal is 
-re-observed, the N is increased. So, look in your data for "large" N.
+re-observed, the N is increased, up to a maximum of 5. Search your data for `acttyp` for "large" N.
+
 More information is found on the "How Observing Works" tab at http://setiquest.info/.
 
 
@@ -55,7 +58,7 @@ has an identification number, which is stored in a particular external database 
 
 ##### `power`
 
-?? what are the units? 
+The total power of the signal (in arbitrary units relative to the average noise)
 
 ##### `snr`
 
@@ -76,7 +79,7 @@ This is the size of the signal bandwidth -- it's how wide the signal appears on 
 
 ##### `pol`
 
-** More info. If it's left, does it mean only observed in left circularly polarized signal? what does 'mixed' mean - signal found in both, but not at the exact same time and frequency
+The primary polarity of the observed signal. 
 
 Values can be
 
@@ -85,33 +88,38 @@ Values can be
   * both
   * mixed
 
-##### `sigtyp`
+It should be noted that `left` and `right` polarizations are misnomers. It was the intention of the SETI group
+to observe left- and right-circularly polarized signals. However, that never came to fruition. Instead the 
+antenna at the ATA observe a long the horizontal and vertical polarizations (relative to the Earth's surface
+at the observatory). The `left` and `right` direcitons are really the horizontal and vertical polarization, respectively.
 
-?? More info
+##### `sigtyp`
 
 The signal type can be 
 
-  * CwP = carrier wave power (0.7 Hz)
-  * CwC = carrier wave coherent (0.01 Hz)
+  * CwP = carrier wave power 
+  * CwC = carrier wave coherent 
   * Pul = pulsed signal
 
 ##### `pperiods`
 
-?? Does this pertain only to `sigtyp` = Pul? 
+The observed periodicity of the pulsed signal. Only for `sigtyp = Pul`.
 
 ##### `npul`
 
-?? Also, does this pertain only to sigtyp=Pul?
+Number of pulses observed. Only for `sigtyp = Pul`.
 
 ##### `inttimes`
 
-?? Does this pretain just to the spectrogram? Can I get an example? If the signal is observed over the whole spectrogram, would inttimes = 92 seconds? And if the signal only showed up for a few seconds within the spectrogram would inttimes = 3 seconds? Or can `inttimes` be larger than a single spectrogram? 
-
-Total time of observation that resulted in this signal.
+Total time of observation that resulted in this signal. This should correspond to the total amount of time
+in the spectrogram. 
 
 ##### `tscpazdeg` and `tscpeldeg`
 
-?? More info. 
+These tell the direction of the primary telescope in the ATA array at the time of observation. 
+The `tscpazdeg` refers to the azimuthal direction relative to North and `tscpeldeg` is the elevation
+above the local horizon. 
+
 
 ##### `beamno`
 
