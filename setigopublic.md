@@ -8,26 +8,26 @@ Observation of a potential signal results in two pieces of data: a raw data file
 or `archive-compamp`, and preliminary analysis of the signal, which is stored as a row
 in the `SignalDB` table. The raw data are the time-series signal recorded from the ATA, 
 decomposed as left- and right-circularly polarized signals into two separate files, for a 
-particular location in the sky and bandwidth. A SignalDB row contains the conditions of the observation,
-such as the Right Ascension (RA) and Declination (DEC) celestial coordinates of the observation, and 
-signal characteristics such as estimates of the power of the signal, primary carrier frequency, drift, 
+particular location in the sky and bandwidth. A [SignalDB row contains the conditions and characteristics of the observation](signaldb.md),
+such as the Right Ascension (RA) and Declination (DEC) celestial coordinates of the observation, an estimate of the power of the signal, primary carrier frequency, drift, signal classification,
 etc., which are derived from the raw data signals.  All RA/DEC coordinates are referenced from 
-the J2000 equinox. A full description of the values in SignalDB are found [here](). For this 
+the J2000 equinox. 
+
+<!-- For this 
 project, we have stored the SignalDB on
 [dashDB](http://www.ibm.com/analytics/us/en/technology/cloud-data-services/dashdb) and the raw
 `compamp` and `archive-compamp` files in 
 [IBM Object Store](https://console.ng.bluemix.net/catalog/object-storage/).
-
+ -->
 We have constructed an HTTP API that allows you to access these data, which is described in this document. 
 
 The raw data for a signal that is categorized as a `Candidate` is stored as an `archive-compamp` file, 
-while all other types signals are stored as `compamp` files. The only difference between these file 
-types is that the `archive-compamp` contains signal across 16 subbands nearest to the signal observed 
-by the ATA, while the `compamp` files contain just the single subband where `non-Candidate`
+while all other types signals are stored as `compamp` files. An `archive-compamp` contains recorded data across the 16 subbands nearest to the signal observed 
+by the ATA.  However, the `compamp` files contain just the single subband where `non-Candidate`
 signals was observed. 
 
-Right now, we are making only the `Candidate`/`archive-compamp` files and their associated
-row in the SignalDB available. 
+Right now, we are only making the `Candidate`/`archive-compamp` files and their associated
+rows in the SignalDB available. 
 
 Further enhancements to this API will provide access to `compamp` and other ways of retrieving the data.
 
