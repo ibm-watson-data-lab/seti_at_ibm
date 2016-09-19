@@ -2,6 +2,8 @@
 
 This document serves as an introductory guide to accessing the SETI data available at IBM. 
 
+## Setup
+
 There are four parts to working with SETI data
 
   * IBM Spark and Object Store services
@@ -9,6 +11,7 @@ There are four parts to working with SETI data
   * The [`ibmseti` python package](https://github.com/ibm-cds-labs/ibmseti)
   * Understanding the data
 
+> Please read the [privacy warning](https://github.com/ibm-cds-labs/ibmseti#privacy-warning) when using the `ibmseti` package. 
 
 You must create an account on [IBM Bluemix](http://www.ibm.com/cloud-computing/bluemix/) and provision a Spark service and associated Object Store. 
 
@@ -21,6 +24,7 @@ You must create an account on [IBM Bluemix](http://www.ibm.com/cloud-computing/b
     * Click on "Add Object Storage" and follow the instructions
         * create a container called "seti_raw_data"
 
+## Introduction Notebooks
 
 Please read [the beginning section of the HTTP API](setigopublic.md). It provides a 
 basic introduction to the SETI data that is being provided. 
@@ -38,5 +42,21 @@ You may use the links to these notebooks to create new notebooks in your Spark s
 Do this by selecting "New Notebook" in your Spark service, and then provide the URL to 
 these notebooks before you create it. 
 
-Please read the [privacy warning](https://github.com/ibm-cds-labs/ibmseti#privacy-warning) when using the `ibmseti` package. 
+## Other Documents
+
+  * [Science Goals](science_goals.md)
+  * [What Is an E.T. Signal?](what_is_an_et_signal.md)
+
+
+## Contact
+
+We intent for this SETI+IBM collboration to extend to the general public. We want to empower citizen 
+scientists to analyze this data and contribute their analysis and code back to SETI. You can influence
+future analysis and future observation planning. So, please contact us should you have an interesting
+analysis. We can provide you with direction, answers to questions, and access to more data! 
+
+  * [Contact Info](contact_us.md)
+
+
+
 
