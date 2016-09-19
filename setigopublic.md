@@ -5,13 +5,12 @@ beyond our Solar System. Nearly each night, the ATA observes radio frequencies i
 frequency range from particular localtions in the sky. 
 
 Observation of a potential signal results in two pieces of data: a raw data file, called a `compamp`
-or `archive-compamp`, and preliminary analysis of the signal, which is stored as a row
-in the `SignalDB` table. The raw data are the time-series signal recorded from the ATA, 
-decomposed as left- and right-circularly polarized signals into two separate files, for a 
-particular location in the sky and bandwidth. A [SignalDB row contains the conditions and characteristics of the observation](signaldb.md),
+or `archive-compamp`, and the preliminary analysis of the signal, which is stored as a row
+in the `SignalDB` table. The raw data are the digitized time-series radio signals along two 
+polarizations within a particular bandwidth for a particular location in the sky. A [SignalDB row contains the conditions and characteristics of the observation](signaldb.md),
 such as the Right Ascension (RA) and Declination (DEC) celestial coordinates of the observation, an estimate of the power of the signal, primary carrier frequency, drift, signal classification,
-etc., which are derived from the raw data signals.  All RA/DEC coordinates are referenced from 
-the J2000 equinox. 
+etc., which are derived from the raw data signals.  (All RA/DEC coordinates are referenced from 
+the J2000 equinox.)
 
 <!-- For this 
 project, we have stored the SignalDB on
@@ -274,9 +273,12 @@ rdd = sc.parallelize(rows)
 rdd = rdd.groupBy(lambda row: row['container'] + '-' + row['objectname']) 
 ```
 
-You'll also notice there multiple files that have the same SignalDB, but with slightly
-different file names. The antenna data are decomposed into left- and right-circularly polarized
-complex data signals, which are stored in separate files; hence, the `L` and `R` components of the names.
+You'll also notice there multiple files that have the same SignalDB, but with names that differ only
+by a `L` or `R`. The ATA records signals along the horizontal and veritcal polarizations 
+(relative to the ATA's orientation to the Earth). The initial intent, however, was to record the
+left- and right-circularly polarized signals. This was not feasible for technical reasons, but 
+the naming convention stuck. The horizontal and vertical components of the signal are stored in the 
+`L` and `R` files, respectively.
 
 The location of the raw data is stored in an
 [IBM Object Store available on Bluemix](https://developer.ibm.com/bluemix/2015/10/20/getting-started-with-bluemix-object-storage/).
