@@ -10,7 +10,7 @@ However, there are characteristics of a signal that would be reasonable to expec
   * Reproducible. Should a signal be found, confirmation should be obtained from an independent observation.
   * Stable, non-zero Doppler drift. Any signal with a zero frequency drift is probably local radio frequency interference (RFI).
   * Not RFI. Internally at SETI, there exists a database of RFI signals to compare against before classification. The data provided in this project have passed this check.
-  * Sign of intelligence. A signal appears to contain some type of encoding or chirping, or displays the statistical properties of a signal (not noise). In the SETI context, decoding symbols from signals will likely not be possible. A signal with a bandwidth smaller than 300 Hz would be sufficient since there is no evidence that astrophysical objects can produce smaller bandwidths<sup>1</sup>.
+  * Sign of intelligence. A signal appears to contain some type of encoding or chirping, or displays the statistical properties of a signal (not noise). In the SETI context, decoding symbols from signals will likely not be possible. A signal with a bandwidth smaller than 300 Hz would be sufficient evidence since there is no evidence that astrophysical objects can produce smaller bandwidths<sup>1</sup>.
 
 
 Yet, things aren't always so simple, as explained by Dr. Jeff Scargle of the NASA Ames 
