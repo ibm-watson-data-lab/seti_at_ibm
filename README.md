@@ -13,14 +13,14 @@ There are four parts to working with SETI data
 
 > Please read the [privacy warning](https://github.com/ibm-cds-labs/ibmseti#privacy-warning) when using the `ibmseti` package. 
 
-You must create an [IBM Data Science Experience](http://datascience.ibm.com/) account or sign up for [IBM Bluemix](http://www.ibm.com/cloud-computing/bluemix/) and provision a Spark service and associated Object Store from the Catalog. 
+You must create an [IBM Data Science Experience](http://datascience.ibm.com/) account or sign up for [IBM Bluemix](http://www.ibm.com/cloud-computing/bluemix/) and provision a Spark service. 
 Your account will be used to obtain an `access_token` that will give you access to the raw SETI data files, which will be shown to you in the tutorials.
 
 ### Data Science Experience (DSX)
 
   1. [Sign up for DSX](http://datascience.ibm.com/)
   2. Create a new notebook. You have the option to create a notebook that copies one of our [example notebooks](notebooks). This is done by selecting the 'From URL' tab when configuring the new notebook and pasting in a URL. Or, if you like, you can create a new blank notebook and type in the code by hand. 
-  3. Click on 'Data Sources' on the right pallete and follow the instructions to provision an Object Storage instance.
+  3. In order to save raw SETI data, click on 'Data Sources' on the right pallete and follow the instructions to provision an Object Storage instance.
     * create a container called "seti_raw_data"
 
 
@@ -28,7 +28,7 @@ Your account will be used to obtain an `access_token` that will give you access 
 
   1. [Sign Up for Bluemix](https://console.ng.bluemix.net/registration/?Target=https%3A%2F%2Fconsole.ng.bluemix.net%2Flogin%3Fstate%3D%2Fhome%2Fonboard)
   2. [Provision a Spark Service](https://console.ng.bluemix.net/catalog/services/apache-spark/) from the Catalog
-  3. Connect an Object Store during the setup.
+  3. In order to save raw SETI data, connect an Object Store during the setup.
     * Click on the Apache Spark Service card from your Dashboard
     * Click on "Notebooks"
     * Click on "Object Store" near the top
