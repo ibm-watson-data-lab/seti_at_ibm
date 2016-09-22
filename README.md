@@ -7,7 +7,7 @@ This document serves as an introductory guide to accessing the SETI data availab
 There are four parts to working with SETI data
 
   * IBM Spark and Object Store services
-  * [The HTTP API](setigopublic.md)
+  * [The HTTP API at https://setigopublic.mybluemix.net](setigopublic.md)
   * The [`ibmseti` python package](https://github.com/ibm-cds-labs/ibmseti)
   * Understanding the data
 
