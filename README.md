@@ -14,7 +14,7 @@ There are four parts to working with SETI data
 > Please read the [privacy warning](https://github.com/ibm-cds-labs/ibmseti#privacy-warning) when using the `ibmseti` package. 
 
 You must create an [IBM Data Science Experience](http://datascience.ibm.com/) account or sign up for [IBM Bluemix](http://www.ibm.com/cloud-computing/bluemix/) and provision a Spark service. 
-Your account will be used to obtain an `access_token` that will give you access to the raw SETI data files, which will be shown to you in the tutorials.
+Your account will be used to obtain an `access_token` that will give you access to the raw SETI data files.
 
 ### Data Science Experience (DSX)
 
