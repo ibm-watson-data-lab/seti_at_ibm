@@ -45,8 +45,8 @@ or will be provided in the future, by the SETI Institute under the Creative Comm
 
   * [**/v1/coordinates/aca**](#celestial-coordinates-of-candidate-events)
   * [**/v1/aca/meta/{ra}/{dec}**](#meta-data-and-location-of-candidate-events)
-  * [**/v1/aca/meta/spacecraft**](#meta-data-and-location-of-candidate-events-for-pacecraft)
-  * [**/v1/token/{username}/{email address}**](#token-for-raw-data-access) **Not Yet Implemented**
+  * [**/v1/aca/meta/spacecraft**](#meta-data-and-location-of-candidate-events-for-spacecraft)
+  * [**/v1/token/**](#token-for-raw-data-access) 
   * [**/v1/data/url/{container}/{objectname}**](#temporary-url-for-raw-data)
 
 
@@ -67,11 +67,10 @@ The general flow should be something like:
 Though it's not necessary, typically one will start by selecting an interesting target or
 interesting region in the sky.  
 
-Once the authorization token system is implemented, you will be required to 
+In order to access the raw data, however, you will be required to 
 have an [IBM Bluemix](https://bluemix.net)
-account and will be limited to 10k temporary URL requests per month. 
+account. There is a limit of 10k temporary URL requests per month. 
 
-You may read below or [click here to see a full example in a shared IBM Spark notebook](https://console.ng.bluemix.net/data/notebooks/b05446cc-8303-4b1d-8150-2d55e49691ef/view?access_token=e70e82feeae786d3e57f2f918b4d22439723dd619e3059143942f0bdb4b9504c).
 
 ### Select an Interesting Target
 
@@ -191,7 +190,7 @@ Given a particular celestial coordinate, we can obtain all of the 'Candidate' si
 as found in the SignalDB.
 
 The endpoint to use is 
-[/v1/aca/meta/{ra}/{dec}](#meta-data-and-location-of-candidate-events).
+[`/v1/aca/meta/{ra}/{dec}`](#meta-data-and-location-of-candidate-events).
 
 Continuing from the example above
 
@@ -296,7 +295,7 @@ the URL, which allows us to control usage.
 ##### Spacecraft
 
 Since spacecraft do not have a fixed RA/DEC value, we have a special endpoint, 
-[/v1/aca/meta/spacecraft](#meta-data-and-location-of-candidate-events-for-pacecraft).
+[`/v1/aca/meta/spacecraft`](#meta-data-and-location-of-candidate-events-for-spacecraft).
 
 Use this endpoint just as you would the `/v1/aca/meta/{ra}/{dec}`. The returned JSON will have
 the same schema. 
@@ -309,23 +308,34 @@ The temporary URLs are obtained with the
 endpoint. *These temporary URLs, by default, are valid for only one hour.* You must consider this
 when obtaining the URLs and retrieving the data. 
 
-We separate the stages of querying for the SignalDB rows and the raw data in order to allow for an
-analysis of the information in the SignalDB before making requests for the raw data. This cuts down on
-unnecessary requests and traffic.
+#### Access Tokens
 
+In order to request a temporary URL, however, you must supply an `access_token` as a query
+parameter to the request. An `access_token` can
+only be obtained if you have an account on [IBM Bluemix](http://www.ibm.com/cloud-computing/bluemix/) 
+or [IBM Data Science Experience](http://datascience.ibm.com/).
+
+You can obtain a token by clicking here and logging into your account.
+
+https://setigopublic.mybluemix.net/token
+
+You are limited to 10,000 temporary URLs per month. However, if you have a compelling reason (a good 
+idea for an analysis), you can [contact us](contact_us.md) and have your limited increased. 
 
 ```python
+param = {'access_token':'1234567890abcdefg'}
+
 def get_temp_url(row):
-  r = requests.get('https://setigopublic.mybluemix.net/v1/data/url/{}/{}'.format(row[0], row[1]))
+  
+  turl = 'https://setigopublic.mybluemix.net/v1/data/url/{}/{}'.format(row[0], row[1])
+  r = requests.get(turl, params=params)
+
   return (r.status_code, r.json()['temp_url'], row[0], row[1])
 
 temp_urls = map(get_temp_url, data_paths)
 ```
 
-For each temporary URL, we can now download the file and store it, or analyze it. 
-[Here is a complete example](https://console.ng.bluemix.net/data/notebooks/6818fe79-84f5-4c22-a800-b80aa7696ef4/view?access_token=c1a0bf78689d45d01425a5b8a59c886da55a16eb17c4708791c14551c3c17b21)
-using the IBM Spark Service to download and place data in
-[IBM Object Storage](https://developer.ibm.com/bluemix/2015/10/20/getting-started-with-bluemix-object-storage/).
+[With the temporary URL, we can now download, store and analyze the data file](notebooks).
 
 
 ## API Reference
@@ -460,9 +470,9 @@ the results.
 
 
 ### Meta-data and location of Candidate Events For Spacecraft
-##### GET /v1/aca/meta/spacecroft
+##### GET /v1/aca/meta/spacecraft
 
-**Description**: This method returns results exactly like [/v1/aca/meta/{ra}/{dec}](),
+**Description**: This method returns results exactly like [`/v1/aca/meta/{ra}/{dec}`](#meta-data-and-location-of-candidate-events),
 except that it returns all data for observed spacecraft (mainly satellites). 
 This returns a JSON object containing the meta-data and file location of 
 each candidate event. The meta-data are the data found
@@ -529,11 +539,16 @@ the results.
 
 
 ### Token for raw data access
-##### GET /v1/token/{username}/{email address}
+##### GET /v1/token
 
-**Description**: This is not yet implemented. Once implemented, this will create a 
-token for the user to access the data. 
+**Description**: This returns an `access_token`, which is required to access temporary URLs to the raw data. 
+This endpoint performs an OAuth2 with IBM Bluemix as the provider. It returns a simple JSON object
 
+```
+{
+  'access_token':'1234567890abcdefg'
+}
+```
 
 ### Temporary URL for raw data
 ##### GET /v1/data/url/{container}/{objectname}
@@ -542,21 +557,13 @@ token for the user to access the data.
 containing a temporary URL to the data file.
 The temporary URL will be valid for 60 minutes from the time it was issued. 
 The container and object name are obtained from the results of 
-[`/v1/aca/meta/{ra}/{dec}'](#meta-data-and-location-of-candidate-events)
-
-*When the `token` parameter is implemented, you will be rate-limited to 10k 
-temporary URLs per month. This is equivalent to 10 GB of raw data.*
-
-*If you can make a compelling argument, you may obtain
-an increase in the number of temporary URLs per month. Contact
-adamcox@us.ibm.com*
-
+[`/v1/aca/meta/{ra}/{dec}`](#meta-data-and-location-of-candidate-events) or
+[`/v1/aca/meta/spacecraft`](#meta-data-and-location-of-candidate-events-for-spacecraft).
 
 
   * **Required Parameters**
 
-    **token**: Not yet implemented. Once implemented, a token will be required for
-    data to be returned.
+    [`access_token`](#token-for-raw-data-access): supplied as a query parameter.
 
   * **Examples**:
 
@@ -564,11 +571,13 @@ adamcox@us.ibm.com*
     ```python
     import requests
 
+    params = {'access_token':'1234567890abcdefg'}
+
     cont = 'setiCompAmp'
     objname = '2014-05-20/act14944/2014-05-20_13-00-01_UTC.act14944.dx2016.id-0.L.archive-compamp'
 
     data_url = 'https://setigopublic.mybluemix.net/v1/data/url/{}/{}'.format(cont, objname)  
-    r_data_url = requests.get(data_url)
+    r_data_url = requests.get(data_url, params=params)
 
     print json.dumps(r.json(), indent=1)
     ```

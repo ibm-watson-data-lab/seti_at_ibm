@@ -9,3 +9,5 @@ Post your analysis onlne (Github Gist?) and then submit a description and link t
 Issues page for this repository](https://github.com/ibm-cds-labs/seti_at_ibm/issues). 
 However, when you create a new Issue, please give it the title "Analysis: <your title>" so that we
 can easily differentiate between analysis posts and other types of "Issues".  
+
+If you would like an increase to your 10k temporary URLs per month, please [contact me directly.](https://github.com/gadamc)
