@@ -52,15 +52,15 @@ Your account will be used to obtain an `access_token` that will give you access 
   4. Get Raw Data temporary URL 
     * using a `container` and `objectname` returned from step 2
     * using your `access_token` returned from step 3
-    * Build URL: https://setigopublic.mybluemix.net/v1/data/url/{container}/{objectname}?access_token=abc123
+    * Build URL: https://setigopublic.mybluemix.net/v1/data/url/{container}/{objectname}?access_token={access_token}
     * Example: 
       * container: `setiCompAmp`
       * objectname: `2013-03-14/act10/2013-03-14_20-37-32_UTC.act10.dx1000.id-0.R.archive-compamp`
       * access_token: `abcdefg1234567890`
-      * URL: https://setigopublic.mybluemix.net/v1/data/url/setiCompAmp/2013-03-14/act10/2013-03-14_20-37-32_UTC.act10.dx1000.id-0.R.archive-compamp?access_token=abcdefg1234567890
+      * URL: ht<span>tps</span>://setigopublic.mybluemix.net/v1/data/url/setiCompAmp/2013-03-14/act10/2013-03-14_20-37-32_UTC.act10.dx1000.id-0.R.archive-compamp?access_token=abcdefg1234567890
   5. Get Raw Data for Candidate E.T. signal
     * GET temporary URL from step 4 before expiration
-    * https://dal.objectstorage.open.softlayer.com/v1/AUTH_cdbef52bdf7a449c96936e1071f0a46b/setiCompAmp/2013-03-14/act10/2013-03-14_20-37-32_UTC.act10.dx1000.id-0.R.archive-compamp?temp_url_sig=2e4e981c7a14b899394e4bde6a9d6d53e238f56b&temp_url_expires=1475256287
+    * ht<span>tps</span>://dal.objectstorage.open.softlayer.com/v1/AUTH_cdbef52bdf7a449c96936e1071f0a46b/setiCompAmp/2013-03-14/act10/2013-03-14_20-37-32_UTC.act10.dx1000.id-0.R.archive-compamp?temp_url_sig=2e4e981c7a14b899394e4bde6a9d6d53e238f56b&temp_url_expires=1475256287
 
 ## Introduction Notebooks
 
