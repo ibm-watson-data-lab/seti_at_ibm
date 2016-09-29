@@ -1,6 +1,6 @@
-# Getting Started with SETI Data Analysis
+# Getting Started with SETI@IBMCloud Data Analysis
 
-This document serves as an introductory guide to accessing the SETI data available at IBM. 
+This document serves as an introductory guide to accessing the SETI data available from <span>SETI</span>@IBMCloud. 
 
 ## Setup
 
@@ -13,8 +13,11 @@ There are four parts to working with SETI data
 
 > Please read the [privacy warning](https://github.com/ibm-cds-labs/ibmseti#privacy-warning) when using the `ibmseti` package. 
 
-You must create an [IBM Data Science Experience](http://datascience.ibm.com/) account or sign up for [IBM Bluemix](http://www.ibm.com/cloud-computing/bluemix/) and provision a Spark service. 
+
+You must create an [IBM Data Science Experience](http://datascience.ibm.com/) account or sign up for [IBM Bluemix](http://www.ibm.com/cloud-computing/bluemix/) and provision a Spark service and associated Object Store from the Catalog. 
 Your account will be used to obtain an `access_token` that will give you access to the raw SETI data files.
+
+### Choose: Bluemix or DSX
 
 ### Data Science Experience (DSX)
 
@@ -35,6 +38,29 @@ Your account will be used to obtain an `access_token` that will give you access 
     * Click on "Add Object Storage" and follow the instructions
         * create a container called "seti_raw_data"
   4. From your Spark Service, start a new notebook. You have the option to create a notebook that copies one of our [example notebooks](notebooks). This is done by selecting the 'From URL' tab when configuring the new notebook and pasting in a URL. **For Bluemix, you'll need to link to the raw version of the file.** Or, if you like, you can create a new blank notebook and type in the code by hand. 
+
+
+### Basic Intro to HTTP API
+
+  1. Find a Celestial Coordinate with data
+    * http://setigopublic.mybluemix.net/v1/coordinates/aca
+    * select an RA/DEC from the returned JSON: 0.03, 66.306  
+  2. Find meta-data for Candidate E.T. signals from coordinate
+    * http://setigopublic.mybluemix.net/v1/aca/meta/0.03/66.306
+  3. Get Access Token (will need IBM Bluemix/DSX account)
+    * http://setigopublic.mybluemix.net/token
+  4. Get Raw Data temporary URL 
+    * using a `container` and `objectname` returned from step 2
+    * using your `access_token` returned from step 3
+    * Build URL: https://setigopublic.mybluemix.net/v1/data/url/{container}/{objectname}?access_token=abc123
+    * Example: 
+      * container: `setiCompAmp`
+      * objectname: `2013-03-14/act10/2013-03-14_20-37-32_UTC.act10.dx1000.id-0.R.archive-compamp`
+      * access_token: `abcdefg1234567890`
+      * URL: https://setigopublic.mybluemix.net/v1/data/url/setiCompAmp/2013-03-14/act10/2013-03-14_20-37-32_UTC.act10.dx1000.id-0.R.archive-compamp?access_token=abcdefg1234567890
+  5. Get Raw Data for Candidate E.T. signal
+    * GET temporary URL from step 4 before expiration
+    * https://dal.objectstorage.open.softlayer.com/v1/AUTH_cdbef52bdf7a449c96936e1071f0a46b/setiCompAmp/2013-03-14/act10/2013-03-14_20-37-32_UTC.act10.dx1000.id-0.R.archive-compamp?temp_url_sig=2e4e981c7a14b899394e4bde6a9d6d53e238f56b&temp_url_expires=1475256287
 
 ## Introduction Notebooks
 
@@ -67,7 +93,7 @@ these notebooks before you create it.
   * [Facebook/SETIInstitute](https://www.facebook.com/SETIInstitute)
   * [SETI.org](http://www.seti.org/)
   * [SETIQuest.info](http://setiquest.info/)
-  * [SETIQuest.org][http://setiquest.org/]
+  * [SETIQuest.org](http://setiquest.org/)
   * [Jon Richard's Twitter feed (SETI engineer at ATA)](https://twitter.com/jrseti)
 
 ## Contact
