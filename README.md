@@ -43,12 +43,12 @@ Your account will be used to obtain an `access_token` that will give you access 
 ### Basic Intro to HTTP API
 
   1. Find a Celestial Coordinate with data
-    * http://setigopublic.mybluemix.net/v1/coordinates/aca
+    * https://setigopublic.mybluemix.net/v1/coordinates/aca
     * select an RA/DEC from the returned JSON: 0.03, 66.306  
   2. Find meta-data for Candidate E.T. signals from coordinate
-    * http://setigopublic.mybluemix.net/v1/aca/meta/0.03/66.306
+    * https://setigopublic.mybluemix.net/v1/aca/meta/0.03/66.306
   3. Get Access Token (will need IBM Bluemix/DSX account)
-    * http://setigopublic.mybluemix.net/token
+    * https://setigopublic.mybluemix.net/token
   4. Get Raw Data temporary URL 
     * using a `container` and `objectname` returned from step 2
     * using your `access_token` returned from step 3
