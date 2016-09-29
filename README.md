@@ -42,6 +42,8 @@ Your account will be used to obtain an `access_token` that will give you access 
 
 ### Basic Intro to HTTP API
 
+The following steps let you click through with your browser to see the SETI data, without the need for a Python environment. It's purely for demonstration, however. The HTTP API is designed to be consumed programmatically. 
+
   1. Find a Celestial Coordinate with data
     * https://setigopublic.mybluemix.net/v1/coordinates/aca
     * select an RA/DEC from the returned JSON: 0.03, 66.306  
