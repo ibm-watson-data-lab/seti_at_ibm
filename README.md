@@ -45,7 +45,7 @@ In order to get at the raw data, **you will need Bluemix or Data Science Experie
 
 ## Raw Data Analysis
 
-The following set of instructions and notebooks will introduce you to doing analysis with SETI@IBMCloud. We  will use
+The following set of instructions and notebooks will introduce you to doing analysis with SE<span>TI</span>@IBMCloud. We  will use
 
   * the HTTP API at https://setigopublic.mybluemix.net
   * IBM Spark and Object Store services
