@@ -32,16 +32,16 @@ In order to get at the raw data, **you will need Bluemix or Data Science Experie
   4. Get Raw Data temporary URL 
     * using a `container` and `objectname` returned above
     * using your `access_token` 
-    * Build URL: https://setigopublic.mybluemix.net/v1/data/url/{container}/{objectname}?access_token={access_token}
+    * Build URL: ht<span>tps://setigop</span>ublic.mybluemix.net/v1/data/url/{container}/{objectname}?access_token={access_token}
     * Example: 
       * container: `setiCompAmp`
       * objectname: `2013-03-14/act10/2013-03-14_20-37-32_UTC.act10.dx1000.id-0.R.archive-compamp`
       * access_token: `abcdefg1234567890`
-      * URL: ht<span>tps</span>://setigopublic.mybluemix.net/v1/data/url/setiCompAmp/2013-03-14/act10/2013-03-14_20-37-32_UTC.act10.dx1000.id-0.R.archive-compamp?access_token=abcdefg1234567890
+      * URL: ht<span>tps://setigopub</span>lic.mybluemix.net/v1/data/url/setiCompAmp/2013-03-14/act10/2013-03-14_20-37-32_UTC.act10.dx1000.id-0.R.archive-compamp?access_token=abcdefg1234567890
   5. Get Raw Data for Candidate E.T. signal
     * Use the URL returned in the previous step to get the raw `archive-compamp` file.
     * Example:
-      * ht<span>tps</span>://dal.objectstorage.open.softlayer.com/v1/AUTH_cdbef52bdf7a449c96936e1071f0a46b/setiCompAmp/2013-03-14/act10/2013-03-14_20-37-32_UTC.act10.dx1000.id-0.R.archive-compamp?temp_url_sig=2e4e981c7a14b899394e4bde6a9d6d53e238f56b&temp_url_expires=1475256287
+      * https://<span></span>dal.objectstorage.open.softlayer.com/v1/AUTH_cdbef52bdf7a449c96936e1071f0a46b/setiCompAmp/2013-03-14/act10/2013-03-14_20-37-32_UTC.act10.dx1000.id-0.R.archive-compamp?temp_url_sig=2e4e981c7a14b899394e4bde6a9d6d53e238f56b&temp_url_expires=1475256287
 
 ## Raw Data Analysis
 
