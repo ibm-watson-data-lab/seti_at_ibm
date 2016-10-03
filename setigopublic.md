@@ -8,7 +8,7 @@ Observation of a potential signal results in two pieces of data: a raw data file
 or `archive-compamp`, and the preliminary analysis of the signal, which is stored as a row
 in the `SignalDB` table. The raw data are the digitized time-series radio signals along two 
 polarizations within a particular bandwidth for a particular location in the sky. A [SignalDB row contains the conditions and characteristics of the observation](signaldb.md),
-such as the Right Ascension (RA) and Declination (DEC) celestial coordinates of the observation, an estimate of the power of the signal, primary carrier frequency, drift, signal classification,
+such as the Right Ascension (RA) and Declination (DEC) celestial coordinates of the signal, an estimate of the power of the signal, primary carrier frequency, carrier frequency drift, signal classification,
 etc., which are derived from the raw data signals.  (All RA/DEC coordinates are referenced from 
 the J2000 equinox.)
 
@@ -28,7 +28,7 @@ signals was observed.
 Right now, we are only making the `Candidate`/`archive-compamp` files and their associated
 rows in the SignalDB available. 
 
-Further enhancements to this API will provide access to `compamp` and other ways of retrieving the data.
+Further enhancements to this API will provide access to the non-candidate `compamp` files and other ways of retrieving the data.
 
 ### Data License
 
@@ -289,7 +289,7 @@ file and getting a URL to the raw data file for a reason. Since downloading and 
 raw data can be an expensive operation, making these steps separate gives your analysis the
 opportunity to select only data, based on the values in SignalDB, that may be interesting. For example,
 you may wish to consider only data that have a particular Signal-To-Noise ratio (SNR is one of the values
-in SignalDB). Secondly, we issue temporary URLs that expire one hour after you've requested
+in SignalDB). Secondly, we issue temporary URLs that expire 24 hours after you've requested
 the URL, which allows us to control usage. 
 
 ##### Spacecraft
@@ -305,8 +305,7 @@ the same schema.
 
 The temporary URLs are obtained with the
 [`/v1/data/url/{containter}/{objectname}`](#temporary-url-for-raw-data) 
-endpoint. *These temporary URLs, by default, are valid for only one hour.* You must consider this
-when obtaining the URLs and retrieving the data. 
+endpoint. *These temporary URLs, by default, are valid for only 24 hours.* This should give you a sufficient amount of time to manage your code and retrieve the data before expiration. 
 
 #### Access Tokens
 
