@@ -88,7 +88,6 @@ The following set of instructions and notebooks will introduce you to doing anal
 
 As previously noted, you must create an [IBM Data Science Experience](http://datascience.ibm.com/) account or sign up for [IBM Bluemix](http://www.ibm.com/cloud-computing/bluemix/) in order to get an `access_token` to the data. The example notebooks below use Spark and Object Storage. The free 30-day Bluemix/DSX trial will allow you to provision a Spark service and associated Object Store. 
 
-For a basic introduction to the SETI data in this project, please read [the introduction section of the HTTP API](setigopublic.md). 
 
 ### Choose DSX or Bluemix Account
 
