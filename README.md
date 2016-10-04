@@ -2,9 +2,43 @@
 
 This document serves as an introductory guide to accessing the SETI data available from <span>SETI</span>@IBMCloud. 
 
+
+#### Brief Introduction to SET<span>I@</span>IBMCloud Data
+
+The SETI Institute utilizes the Allen Telescope Array (ATA) to search for radio signals from intelligent life
+beyond our Solar System. Nearly each night, the ATA observes radio frequencies in the ~1-10 GHz 
+frequency range from multiple locations in the sky. 
+
+Observation of a potential signal results in two pieces of data
+
+  * a raw data file, called a `compamp` or `archive-compamp`
+  * preliminary analysis of the signal, stored as a row in the `SignalDB` table 
+
+The raw data are the digitized time-series radio signals. For each observation, there are two raw data 
+files, one for each polarization. The time-series data have been bandpass filtered, meaning the
+frequencies observed in the data only cover a small range, called the bandwidth. 
+The bandwidth may be recovered from information found
+in the header of the raw data file. (The `ibmseti` python package will calculate this for you, along 
+with reading the data file and providing some basic signal processing.)
+
+A [SignalDB row contains the conditions and characteristics of the observation](signaldb.md),
+such as the Right Ascension (RA) and Declination (DEC) celestial coordinates of the signal, 
+an estimate of the power of the signal, primary carrier frequency, carrier frequency drift, 
+signal classification, etc. The RA/DEC are the coordinates in the sky of the target being observed 
+(referenced from the J2000 equinox). 
+
+The raw data for a signal that is categorized as a `Candidate` is stored as an `archive-compamp` file, 
+while all other non-candidate signals are stored as `compamp` files. 
+
+Right now, we are only making the `Candidate`/`archive-compamp` files and their associated
+rows in the SignalDB available. There are 456717 `archiv-compamp` files currently available, obtained
+during observations from 2013 to 2015. 
+
+Further updates will provide access to the non-candidate `compamp` files and other ways of retrieving the data.
+
 ### Basic Intro to HTTP API
 
-Before getting into the details of the [raw signal data analysis](#raw-data-analysis), you can get a peek using just your browser. This is purely for demonstration, however. The HTTP API is designed to be consumed programmatically. 
+Before getting into the details of the [raw signal data analysis](#raw-data-analysis), you can get a peek using just your browser. This is purely for demonstration, however. The [HTTP API](setigopublic.md) is designed to be consumed programmatically. 
 
 #### SignalDB Introduction 
 
@@ -13,11 +47,12 @@ Data Science Experience account.
 
   1. Find a Celestial Coordinate with data
     * https://setigopublic.mybluemix.net/v1/coordinates/aca
-    * Data set tells you how many SignalDB rows for Candidate E.T. signals exist for each RA/DEC
-    * Select an RA/DEC from the returned JSON: 0.03, 66.306  
-  2. Find meta-data for Candidate E.T. signals from coordinate
+    * Returns the number of SignalDB rows for Candidate E.T. signals for each RA/DEC
+    * Select an RA,DEC coordinate  
+      * For example:  RA = 0.03, DEC = 66.306  
+  2. Find meta-data for Candidate E.T. signals from a coordinate
     * https://setigopublic.mybluemix.net/v1/aca/meta/0.03/66.306
-    * Gives you the SignalDB data for the Candidate events. 
+    * Returns the SignalDB data for the Candidate events. 
 
 The SignalDB data includes signal classifications, 
 [metrics such as central frequency, central frequency drift rate, power, signal/noise, etc.](signaldb.md), 

@@ -1,34 +1,7 @@
 # SETI Public Data Server
 
-The SETI Institute utilizes the Allen Telescope Array (ATA) to search for radio signals from intelligent life
-beyond our Solar System. Nearly each night, the ATA observes radio frequencies in the ~1-10 GHz 
-frequency range from particular localtions in the sky. 
+This document describes the HTTP API that allows you to access data available in the SETI@IBMCloud project.
 
-Observation of a potential signal results in two pieces of data: a raw data file, called a `compamp`
-or `archive-compamp`, and the preliminary analysis of the signal, which is stored as a row
-in the `SignalDB` table. The raw data are the digitized time-series radio signals along two 
-polarizations within a particular bandwidth for a particular location in the sky. A [SignalDB row contains the conditions and characteristics of the observation](signaldb.md),
-such as the Right Ascension (RA) and Declination (DEC) celestial coordinates of the signal, an estimate of the power of the signal, primary carrier frequency, carrier frequency drift, signal classification,
-etc., which are derived from the raw data signals.  (All RA/DEC coordinates are referenced from 
-the J2000 equinox.)
-
-<!-- For this 
-project, we have stored the SignalDB on
-[dashDB](http://www.ibm.com/analytics/us/en/technology/cloud-data-services/dashdb) and the raw
-`compamp` and `archive-compamp` files in 
-[IBM Object Store](https://console.ng.bluemix.net/catalog/object-storage/).
- -->
-We have constructed an HTTP API that allows you to access these data, which is described in this document. 
-
-The raw data for a signal that is categorized as a `Candidate` is stored as an `archive-compamp` file, 
-while all other types signals are stored as `compamp` files. An `archive-compamp` contains recorded data across the 16 subbands nearest to the signal observed 
-by the ATA.  However, the `compamp` files contain just the single subband where `non-Candidate`
-signals was observed. 
-
-Right now, we are only making the `Candidate`/`archive-compamp` files and their associated
-rows in the SignalDB available. 
-
-Further enhancements to this API will provide access to the non-candidate `compamp` files and other ways of retrieving the data.
 
 ### Data License
 
