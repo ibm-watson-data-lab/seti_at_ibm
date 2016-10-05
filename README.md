@@ -14,12 +14,12 @@ Observation of a potential signal results in three pieces of data
   * two raw data files, called a `compamp` or `archive-compamp`
   * preliminary analysis of the signal, stored as a row in the `SignalDB` table 
 
-On each ATA telescope, there are two antenna -- one for the horizontal and vertical polarization 
-components of the radio signal. 
-The raw, time-series signals from the entire ATA array are digitized and combined into a single data file 
-for each polarization. Additionally, the time-series data have been bandpass filtered, meaning the
+On each ATA telescope, the horizontal and vertical polarization 
+components of the radio signal are measured separately. 
+For each polarization, the raw, time-series signals from the entire ATA array are digitized and 
+combined into a single data file. Additionally, the time-series data have been bandpass filtered, meaning the
 frequencies observed in the data only cover a small range, called the bandwidth. 
-The bandwidth may be recovered from information found
+The exact frequency range may be recovered from information found
 in the header of the raw data file. (The `ibmseti` python package will calculate this for you, along 
 with reading the data file and providing the necessary signal processing to get you started.)
 
