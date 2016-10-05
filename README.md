@@ -9,17 +9,19 @@ The SETI Institute utilizes the Allen Telescope Array (ATA) to search for radio 
 beyond our Solar System. Nearly each night, the ATA observes radio frequencies in the ~1-10 GHz 
 frequency range from multiple locations in the sky. 
 
-Observation of a potential signal results in two pieces of data
+Observation of a potential signal results in three pieces of data
 
-  * a raw data file, called a `compamp` or `archive-compamp`
+  * two raw data files, called a `compamp` or `archive-compamp`
   * preliminary analysis of the signal, stored as a row in the `SignalDB` table 
 
-The raw data are the digitized time-series radio signals. For each observation, there are two raw data 
-files, one for each polarization. The time-series data have been bandpass filtered, meaning the
+On each ATA telescope, there are two antenna -- one for the horizontal and vertical polarization 
+components of the radio signal. 
+The raw, time-series signals from the entire ATA array are digitized and combined into a single data file 
+for each polarization. Additionally, the time-series data have been bandpass filtered, meaning the
 frequencies observed in the data only cover a small range, called the bandwidth. 
 The bandwidth may be recovered from information found
 in the header of the raw data file. (The `ibmseti` python package will calculate this for you, along 
-with reading the data file and providing some basic signal processing.)
+with reading the data file and providing the necessary signal processing to get you started.)
 
 A [SignalDB row contains the conditions and characteristics of the observation](signaldb.md),
 such as the Right Ascension (RA) and Declination (DEC) celestial coordinates of the signal, 
