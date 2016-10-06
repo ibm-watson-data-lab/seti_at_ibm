@@ -20,7 +20,7 @@ For each polarization, the raw, time-series signals from the entire ATA array ar
 combined into a single data file. Additionally, the time-series data have been bandpass filtered, meaning the
 frequencies observed in the data only cover a small range, called the bandwidth. 
 The exact frequency range may be recovered from information found
-in the header of the raw data file. (The `ibmseti` python package will calculate this for you, along 
+in the header of the raw data file. (The [`ibmseti`](https://github.com/ibm-cds-labs/ibmseti) python package will calculate this for you, along 
 with reading the data file and providing the necessary signal processing to get you started.)
 
 A [SignalDB row contains the conditions and characteristics of the observation](signaldb.md),
@@ -86,7 +86,7 @@ The following set of instructions and notebooks will introduce you to doing anal
 
   * the HTTP API at https://setigopublic.mybluemix.net
   * IBM Spark and Object Store services
-  * the `ibmseti` python package
+  * the [`ibmseti`](https://github.com/ibm-cds-labs/ibmseti) python package
 
 As previously noted, you must create an [IBM Data Science Experience](http://datascience.ibm.com/) account or sign up for [IBM Bluemix](http://www.ibm.com/cloud-computing/bluemix/) in order to get an `access_token` to the data. The example notebooks below use Spark and Object Storage. The free 30-day Bluemix/DSX trial will allow you to provision a Spark service and associated Object Store. 
 
