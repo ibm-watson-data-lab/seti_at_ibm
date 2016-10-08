@@ -43,17 +43,20 @@ The date-time of the observation is recorded in ISO format 'yyyy-mm-ddThh:mm:ssZ
 
 This is the "Activity Type" of the observation. There are a number of possible values:
 
-  * target
-  * target`N`-on
-  * target`N`off
-  
-for N = 1 - 5. 
+  * `target`
+  * `targetN-on`
+  * `targetNoff`
+  * `target5-on-nofollowup`
+  * "other"
 
-When the ATA makes an initial observation of a candidate signal, the ATA
+for N = 1 - 5 and where "other" could be a list of special activity types to designate
+calibrations and special tests. 
+
+When the ATA makes an initial observation of a candidate signal, the SonATA software then 
 decides to look again for the signal. This second observation is called 'target1-on'. The ATA 
-then looks *elsewhere*, called target1-off. If a signal is **not** observed in target1-off, 
+then looks *elsewhere*, called `target1off`. If a signal is **not** observed in `target1off`, 
 the ATA then again looks at the original location. An observation of a candidate signal would 
-then be called target2-on. This happens repeatedly. Each time a potential candidate signal is 
+then be called `target2-on`. This happens repeatedly. Each time a potential candidate signal is 
 re-observed, the N is increased, up to a maximum of 5. Search your data for `acttyp` for "large" N.
 
 More information is found on the "How Observing Works" tab at http://setiquest.info/.
