@@ -21,7 +21,7 @@ Have we missed a SETI signal already? The SETI institute is always looking for n
 The ATA DAQ software, [SonATA](https://github.com/setiQuest/SonATA) data acquisition system software, 
 makes subsequent observations of the same RA/DEC celestial location after detecting a signal. 
 The SonATA software uses it's own signal classification methodology. However, 
-if real-time signal classification can be improved, the ATA woudl spend less time observing where no signal 
+if real-time signal classification can be improved, the ATA would spend less time observing where no signal 
 exists, and more time where a real signal is present. 
 
 An accurate ML model, trained from previously taken data, could provide a better signal classifier 
