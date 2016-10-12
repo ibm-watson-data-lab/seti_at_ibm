@@ -62,7 +62,7 @@ with which you can already do some interesting visualization and analysis.
 
 #### Raw Data Introduction
 
-In order to get at the raw data, **you will need Bluemix or Data Science Experience**.
+In order to get at the raw data, **you will need a Bluemix or Data Science Experience account**.
 
   1. Get Access Token 
     * https://setigopublic.mybluemix.net/token
