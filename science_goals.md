@@ -11,8 +11,7 @@ there is less emphasis and work done looking for patterns in the data after acqu
 This is a challenge to search for interesting signals and patterns in the current data set. 
 Some of this work can be done by analyzing the contents of the SignalDB alone. 
 It could also be done via a newly-developed signal classification algorithm applied to the raw data. We should note that 
-this is a high-risk, high-reward project, meaning the likelihood of finding a signal in this data is very small. 
-However, developing new signal classification would dovetail with projects described in the next section. 
+this is a high-risk, high-reward project, meaning the likelihood of finding a signal in this data is very small. It is slightly more likely that a re-analysis of the SETI data could result in an argument to be made for further observations of a particular target. Also, developing new or better signal classifications in this context would dovetail with projects described in the next section. 
 
  * Does there exist a short-term signal that is found days, weeks or month's apart?
  * Is there a consistent signal found at a specific frequency across the sky (need to consider Doppler drift)?
