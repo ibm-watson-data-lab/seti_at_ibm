@@ -79,14 +79,14 @@ The signal-to-noise ratio is only reported for candidate events.
 
 This is the measured frequency, in MHz, of the signal observed in the spectrogram at `t=0`. 
 
-##### `drifthz`
+##### `drifthzs`
 
-This is the Dopper drift of the observed signal. This is due to an acceleration between the ATA
+This is the Dopper drift of the observed signal, in units of Hz/second. This is due to an acceleration between the ATA
 and the source of the signal. 
 
 ##### `widhz`
 
-This is the size of the signal bandwidth -- it's how wide the signal appears on the spectrogram. 
+This is the size of the signal bandwidth, in Hz -- it's the width of the signal in the spectrogram. 
 
 ##### `pol`
 
