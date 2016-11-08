@@ -9,9 +9,9 @@ The SETI Institute utilizes the Allen Telescope Array (ATA) to search for radio 
 beyond our Solar System. Nearly each night, the ATA observes radio frequencies in the ~1-10 GHz 
 frequency range from multiple locations in the sky. 
 
-Observation of a potential signal results in two pieces of data
+Observation of a potential signal results the following data
 
-  * a raw data file, either a `compamp` or `archive-compamp` file depending on signal classification
+  * two raw data files, either two `compamp` or two `archive-compamp` files, depending on signal classification
   * real-time analysis of the signal, stored as a row in the `SignalDB` table 
 
 On each ATA telescope, the horizontal and vertical polarization 
