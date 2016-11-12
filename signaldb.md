@@ -32,7 +32,8 @@ They are delievered to you via the
 | beamno     |  Beam signal number                                |
 | sigclass   |  Signal Class                                      | 
 | sigreason  |  Signal Reason                                     | 
-| candreason |  Candidate Reason
+| container |  The name of the Object Storage container in which the raw data is stored |
+| objectname | The name of the object in Object Storage in which the raw data is stored |
 
 #### Additional Comments on Fields
 
@@ -81,7 +82,7 @@ This is the measured frequency, in MHz, of the signal observed in the spectrogra
 
 ##### `drifthz`
 
-This is the Dopper drift of the observed signal. This is due to an acceleration between the ATA
+This is the Doppler drift of the observed signal. This is due to an acceleration between the ATA
 and the source of the signal. 
 
 ##### `widhz`
@@ -172,5 +173,15 @@ This is sub-categorization for `Candidate` signals
 * RConfrm. Signal was confirmed in followup, passes on to next follow up.
 * SeenOff. Sognal was seen in an off observation, rejected 
 * RctRFI. See above
+
+
+##### `container` and `objectname`
+
+The raw SETI data for this project are stored in an IBM Object Storage instance on IBM Bluemix. 
+In Object Storage, "objects" are stored in containers. Objects can be arbitrary "bags of bits". In
+our particular case, however, we store each compamp or archive-compamp file as a separate object. 
+(*We do this for a special reason due to the nature of this project, but if you're using
+Object Storage yourself, you'll probably want to consider storing data inside large objects, since
+this is a more efficient way for Spark to ingest the data.*)
 
 
