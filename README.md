@@ -44,8 +44,7 @@ Before getting into the details of the [raw signal data analysis](#raw-data-anal
 
 #### SignalDB Introduction 
 
-You can grab as much of the SETI SignalDB data as you like without needing a IBM Bluemix or 
-Data Science Experience account. 
+Extraction of the SignalDB rows via the HTTP API are based on locations of objects in the sky.
 
   1. Find a Celestial Coordinate with data
     * https://setigopublic.mybluemix.net/v1/coordinates/aca
@@ -62,7 +61,10 @@ with which you can already do some interesting visualization and analysis.
 
 #### Raw Data Introduction
 
-In order to get at the raw data, **you will need a Bluemix or Data Science Experience account**.
+In order to get at the raw data, we ask that you first attain an access token. 
+We do this to track usage of the project. This will, for the moment, require you to create a
+30-day free IBM Bluemix account (no credit-card required). 
+Even after your free trial period ends, you can still access the SETI data with your access-token. 
 
   1. Get Access Token 
     * https://setigopublic.mybluemix.net/token
@@ -88,36 +90,45 @@ The following set of instructions and notebooks will introduce you to doing anal
   * IBM Spark and Object Store services
   * the [`ibmseti`](https://github.com/ibm-cds-labs/ibmseti) python package
 
-As previously noted, you must create an [IBM Data Science Experience](http://datascience.ibm.com/) account or sign up for [IBM Bluemix](http://www.ibm.com/cloud-computing/bluemix/) in order to get an `access_token` to the data. The example notebooks below use Spark and Object Storage. The free 30-day Bluemix/DSX trial will allow you to provision a Spark service and associated Object Store. 
+As previously noted, you must create an [IBM Bluemix](http://www.ibm.com/cloud-computing/bluemix/) account
+in order to get an `access_token` to the data. The trial period let's you provision most servies
+completely free, such as Spark service and Object Store, which we use heavily in the example
+analysis below.
 
+### Bluemix Setup
 
-### Choose DSX or Bluemix Account
+[Sign Up for Bluemix](https://console.ng.bluemix.net/registration/?Target=https%3A%2F%2Fconsole.ng.bluemix.net%2Flogin%3Fstate%3D%2Fhome%2Fonboard)
 
-We highly recommend using a DSX account. DSX is focused on the data scientist, obviously, and helps you to 
-use the analytics and data storage tools. DSX uses Bluemix to provision services on your 
-behalf and provides an overall better project management experience. 
-
-### Data Science Experience (DSX)
-
-  1. [Sign up for DSX](http://datascience.ibm.com/)
-  2. Create a new notebook. You have the option to create a notebook that copies one of our [example notebooks](notebooks). This is done by selecting the 'From URL' tab when configuring the new notebook and pasting in a URL. Or, if you like, you can create a new blank notebook and type in the code by hand. 
-  3. In order to save raw SETI data, click on 'Data Sources' on the right pallete and follow the instructions to provision an Object Storage instance.
-    * create a container called "seti_raw_data"
-
-
-### Bluemix
-
-  1. [Sign Up for Bluemix](https://console.ng.bluemix.net/registration/?Target=https%3A%2F%2Fconsole.ng.bluemix.net%2Flogin%3Fstate%3D%2Fhome%2Fonboard)
-  2. [Provision a Spark Service](https://console.ng.bluemix.net/catalog/services/apache-spark/) from the Catalog
+  1. [Provision a Spark Service](https://console.ng.bluemix.net/catalog/services/apache-spark/) from the Catalog
   3. In order to save raw SETI data, connect an Object Store during the setup.
     * Click on the Apache Spark Service card from your Dashboard
-    * Click on "Notebooks"
-    * Click on "Object Store" near the top
-    * Click on "Add Object Storage" and follow the instructions
-        * create a container called "seti_raw_data"
-  4. From your Spark Service, start a new notebook. You have the option to create a notebook that copies one of our [example notebooks](notebooks). This is done by selecting the 'From URL' tab when configuring the new notebook and pasting in a URL. **For Bluemix, you'll need to link to the raw version of the file.** Or, if you like, you can create a new blank notebook and type in the code by hand. 
+    * Click on `Notebooks`
+    * Click on `Object Store` near the top
+    * Click on `Add Object Storage` and follow the instructions
+        * create a container called `seti_raw_data` (or other name if you wish)
+  4. From your Spark Service, create a new notebook. You have the option to create a notebook that is a duplicate of one of our [example notebooks](notebooks). This is done by selecting the `From URL` tab when configuring the new notebook and pasting in the URL. **For Bluemix, you'll need to link to the raw version of the example notebook ([for example](https://raw.githubusercontent.com/ibm-cds-labs/seti_at_ibm/master/notebooks/ibmseti_get_data_tutorial.ipynb)). Look for the `Raw` button on the GitHub page`** Of course, you can also create a new blank notebook and type in the code by hand. 
 
 
+
+### Data Science Experience 
+
+While you can get by with just a Bluemix account, we also recommend trying
+[Data Science Experience (DSX)](http://datascience.ibm.com/). DSX is a new platform
+from IBM that is focused on the data scientist.
+DSX helps you to organize your
+use of the analytics and data storage tools available in Bluemix.
+
+[Sign up for DSX](http://datascience.ibm.com/)
+
+With a DSX account, you can create a new project (Select `My Projects` from the upper left menu) and add
+Spark and data management services. If you've already provisioned those services in your Bluemix account,
+you should see the options to use those services when you initially configure your project. If you have not
+provisioned those services in Bluemix, you can provision them from within DSX, though it will take a few more steps.
+
+Once your project is set up, select `create notebook`. You have the option to create a notebook that copies
+one of our [example notebooks](notebooks). This is done by selecting the `From URL` tab when configuring
+the new notebook and pasting in a URL. Of course, you can also create a new blank notebook and type in
+the code by hand.  
 
 
 ## Introduction Notebooks
@@ -133,11 +144,10 @@ from the raw SETI data, and extracted some features, which may be used in a mach
   * [Retrieve the data from Object Store and calculate features from the spectrogram](notebooks/ibmseti_intro_features.ipynb)
 
 
-You may use the links to these notebooks to create new notebooks in your Spark service. 
-Do this by selecting "New Notebook" in your Spark service, and then provide the URL to 
-these notebooks before you create it. 
 
 ## Other Documents
+
+Reading these documents will be helpful to analyzing the SETI data. 
 
   * [Description of SignalDB](signaldb.md)
   * [Science Goals](science_goals.md)
