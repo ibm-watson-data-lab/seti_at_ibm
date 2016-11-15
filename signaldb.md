@@ -80,14 +80,15 @@ The signal-to-noise ratio is only reported for candidate events.
 
 This is the measured frequency, in MHz, of the signal observed in the spectrogram at `t=0`. 
 
-##### `drifthz`
+##### `drifthzs`
 
-This is the Doppler drift of the observed signal. This is due to an acceleration between the ATA
-and the source of the signal. 
+This is the Doppler drift of the observed signal, in units of Hz/second. This is due to an acceleration
+between the ATA and the source of the signal. 
+(And because the Earth is rotating, the ATA is accelerating relative to everything that is not on the Earth or not in geostationary orbit. Thus, signals with zero Doppler Drift are considered RFI.)
 
 ##### `widhz`
 
-This is the size of the signal bandwidth -- it's how wide the signal appears on the spectrogram. 
+This is the size of the signal bandwidth, in Hz -- it's the width of the signal in the spectrogram. 
 
 ##### `pol`
 
