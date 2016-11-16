@@ -106,7 +106,7 @@ analysis below.
     * Click on `Object Store` near the top
     * Click on `Add Object Storage` and follow the instructions
         * create a container called `seti_raw_data` (or other name if you wish)
-  4. From your Spark Service, create a new notebook. You have the option to create a notebook that is a duplicate of one of our [example notebooks](notebooks). This is done by selecting the `From URL` tab when configuring the new notebook and pasting in the URL. **For Bluemix, you'll need to link to the raw version of the example notebook ([for example](https://raw.githubusercontent.com/ibm-cds-labs/seti_at_ibm/master/notebooks/ibmseti_get_data_tutorial.ipynb)). Look for the `Raw` button on the GitHub page`** Of course, you can also create a new blank notebook and type in the code by hand. 
+  4. From your Spark Service, create a new notebook. You have the option to create a notebook that is a duplicate of one of our [example notebooks](notebooks). This is done by selecting the `From URL` tab when configuring the new notebook and pasting in the URL. **For Bluemix, you'll need to link to the raw version of the example notebook ([for example](https://raw.githubusercontent.com/ibm-cds-labs/seti_at_ibm/master/notebooks/ibmseti_get_data_tutorial.ipynb)). Look for the `Raw` button on the GitHub page.** You can also create a new blank notebook and type in the code by hand. 
 
 
 
@@ -127,14 +127,14 @@ provisioned those services in Bluemix, you can provision them from within DSX, t
 
 Once your project is set up, select `create notebook`. You have the option to create a notebook that copies
 one of our [example notebooks](notebooks). This is done by selecting the `From URL` tab when configuring
-the new notebook and pasting in a URL. Of course, you can also create a new blank notebook and type in
+the new notebook and pasting in a URL. You can also create a new blank notebook and type in
 the code by hand.  
 
 
 ## Introduction Notebooks
 
-After you work through these notebooks, you'll have used the HTTP API
-to access the data, saved that data to your IBM Object Storage service, produced a spectrogram
+After you work through these notebooks, you will have used the HTTP API
+to access the SETI data, saved that data to your IBM Object Storage service, produced a spectrogram
 from the raw SETI data, and extracted some features, which may be used in a machine-learning analysis.
 
 
@@ -150,6 +150,7 @@ from the raw SETI data, and extracted some features, which may be used in a mach
 Reading these documents will be helpful to analyzing the SETI data. 
 
   * [Description of SignalDB](signaldb.md)
+  * [Brief description of the raw data](rawdata.md)
   * [Science Goals](science_goals.md)
   * [What Is an E.T. Signal?](what_is_an_et_signal.md)
 
