@@ -63,8 +63,7 @@ with which you can already do some interesting visualization and analysis.
 
 In order to get at the raw data, we ask that you first attain an access token. 
 We do this to track usage of the project. This will, for the moment, require you to create a
-30-day free IBM Bluemix account (no credit-card required). 
-Even after your free trial period ends, you can still access the SETI data with your access-token. 
+30-day free IBM Data Science Experience account. (This will create a Bluemix account for you automatically during this process.) Even after your free trial period ends, you can still access the SETI data with your access-token. 
 
   1. Get Access Token 
     * https://setigopublic.mybluemix.net/token
@@ -90,46 +89,50 @@ The following set of instructions and notebooks will introduce you to doing anal
   * IBM Spark and Object Store services
   * the [`ibmseti`](https://github.com/ibm-cds-labs/ibmseti) python package
 
-As previously noted, you must create an [IBM Bluemix](http://www.ibm.com/cloud-computing/bluemix/) account
+As previously noted, you must create an [IBM Data Science Experience](https://datascience.ibm.com) account
 in order to get an `access_token` to the data. The trial period let's you provision most servies
-completely free, such as Spark service and Object Store, which we use heavily in the example
-analysis below.
+completely free, such as Spark service and Object Store. 
 
-### Bluemix Setup
+### Data Science Experience Setup
 
-[Sign Up for Bluemix](https://console.ng.bluemix.net/registration/?Target=https%3A%2F%2Fconsole.ng.bluemix.net%2Flogin%3Fstate%3D%2Fhome%2Fonboard)
+When you [signed up for a DSX account](http://datascience.ibm.com/), the onboarding process of DSX should
+have automatically instantiated a Spark service, an Object Storage service and a new sample project space. 
+This is all you need to get started.  
 
-  1. [Provision a Spark Service](https://console.ng.bluemix.net/catalog/services/apache-spark/) from the Catalog
-  3. In order to save raw SETI data, connect an Object Store during the setup.
-    * Click on the Apache Spark Service card from your Dashboard
-    * Click on `Notebooks`
-    * Click on `Object Store` near the top
-    * Click on `Add Object Storage` and follow the instructions
-        * create a container called `seti_raw_data` (or other name if you wish)
-  4. From your Spark Service, create a new notebook. You have the option to create a notebook that is a duplicate of one of our [example notebooks](notebooks). This is done by selecting the `From URL` tab when configuring the new notebook and pasting in the URL. **For Bluemix, you'll need to link to the raw version of the example notebook ([for example](https://raw.githubusercontent.com/ibm-cds-labs/seti_at_ibm/master/notebooks/ibmseti_get_data_tutorial.ipynb)). Look for the `Raw` button on the GitHub page.** You can also create a new blank notebook and type in the code by hand. 
+1. Select `Projects` from the links at the top of the DSX landing page
+2. If a `Default Project` does not exist for you:
+  * Create a new project by clicking the ![+](img/plus_button.png "+") button (or [click here](https://apsportal.ibm.com/projects/new-project?context=analytics))
+  * Provide a project name and select the Spark and Object Storage instances available to you.
+3. Within your project, select "add notebook". 
+4. To directly import one of the tutorial notebooks, select `From URL`
+  * Use the URL to a notebook in the GH repo, such as https://github.com/ibm-cds-labs/seti_at_ibm/blob/master/notebooks/ibmseti_get_data_tutorial.ipynb
+5. Optionally, create a new notebook from scratch and copy/paste the python code from the tutorials.
 
+#### Object Storage Credentials
 
+In order to use the Object Storage instance that is automatically generated in your DSX account 
+programmatically, you will need to obtain the credentials. [For example, the second tutorial in this project steps 
+you through the process of saving data to your Object Storage](notebooks/ibmseti_get_data_tutorial.ipynb). 
+There are two ways to obtain the credentials. 
 
-### Data Science Experience 
+##### Feed Object Storage some data
 
-While you can get by with just a Bluemix account, we also recommend trying
-[Data Science Experience (DSX)](http://datascience.ibm.com/). DSX is a new platform
-from IBM that is focused on the data scientist.
-DSX helps you to organize your
-use of the analytics and data storage tools available in Bluemix.
+1. From within any notebook, select the ![10/01 icon](img/1001.png "10/01") icon near the top right.
+2. If you already have data in your Object Storage, you should see files listed in the side panel. 
+  * If there are no data, click the `browse` button to upload a file. 
+  * Choose a small text file for quick upload.
+  * Click `Apply`
+3. Select an open cell in your notebook.
+4. Under one of your data files, select the `Insert to code` button and choose `Insert Credentials`.
 
-[Sign up for DSX](http://datascience.ibm.com/)
+##### Copy from Bluemix
 
-With a DSX account, you can create a new project (Select `My Projects` from the upper left menu) and add
-Spark and data management services. If you've already provisioned those services in your Bluemix account,
-you should see the options to use those services when you initially configure your project. If you have not
-provisioned those services in Bluemix, you can provision them from within DSX, though it will take a few more steps.
+Alternatively, the credentials are found in your Bluemix account, which was created for you automatically when you signed up for DSX.
 
-Once your project is set up, select `create notebook`. You have the option to create a notebook that copies
-one of our [example notebooks](notebooks). This is done by selecting the `From URL` tab when configuring
-the new notebook and pasting in a URL. You can also create a new blank notebook and type in
-the code by hand.  
-
+1. Log in to https://bluemix.net
+2. Scroll down and click the Object Storage instance you are using in DSX
+3. Select the `Service Credentials` tab and `View Credentials`
+4. Copy these into your notebooks where appropriate.
 
 ## Introduction Notebooks
 
