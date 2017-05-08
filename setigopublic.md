@@ -53,7 +53,7 @@ make data selection significantly easier and more flexible. Once you've found th
 you find interesting, you can then make queries to find the associated raw data files. The example notebooks
 in this documentation, unfortunately, will not be immediately updated to include these instructions. 
 Any instructions you see below where you query the meta-data can be replaced by appropriate filter and
-selection of a dataframe from the single CSV file. 
+selection in a dataframe created from the SignalDB CSV file. 
 
 ### Select an Interesting Target
 
