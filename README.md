@@ -44,6 +44,18 @@ Before getting into the details of the [raw signal data analysis](#raw-data-anal
 
 #### SignalDB Introduction 
 
+
+##### Important Update
+
+The new endpoint `/v1/aca/meta/all` will return the entire SignalDB table in a single CSV file.
+You should use this file to select your data of interest. Loading this data into a dataframe will
+make data selection significantly easier and more flexible. Once you've found the subset of data that
+you find interesting, you can then make queries to find the associated raw data files. The example notebooks
+in this documentation, unfortunately, will not be immediately updated to include these instructions. 
+Any instructions you see below where you query the meta-data can be replaced by appropriate filter and
+selection in a dataframe created from the SignalDB CSV file. 
+
+
 Extraction of the SignalDB rows via the HTTP API are based on locations of objects in the sky.
 
   1. Find a Celestial Coordinate with data
