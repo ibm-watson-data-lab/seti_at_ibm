@@ -18,6 +18,7 @@ or will be provided in the future, by the SETI Institute under the Creative Comm
 
   * [**/v1/coordinates/aca**](#celestial-coordinates-of-candidate-events)
   * [**/v1/aca/meta/{ra}/{dec}**](#meta-data-and-location-of-candidate-events)
+  * [**/v1/aca/meta/all** NEW!](#meta-data-all-and-location-of-candidate-events)
   * [**/v1/aca/meta/spacecraft**](#meta-data-and-location-of-candidate-events-for-spacecraft)
   * [**/v1/token/**](#token-for-raw-data-access) 
   * [**/v1/data/url/{container}/{objectname}**](#temporary-url-for-raw-data)
@@ -41,9 +42,18 @@ Though it's not necessary, typically one will start by selecting an interesting 
 interesting region in the sky.  
 
 In order to access the raw data, however, you will be required to 
-have an [IBM Bluemix](https://bluemix.net)
+have an [IBM Data Science Experience](https://datascience.ibm.com)
 account. There is a limit of 20k temporary URL requests per month. 
 
+### Important Update
+
+The new endpoint `/v1/aca/meta/all` will return the entire SignalDB table in a single CSV file.
+You should use this file to select your data of interest. Loading this data into a dataframe will
+make data selection significantly easier and more flexible. Once you've found the subset of data that
+you find interesting, you can then make queries to find the associated raw data files. The example notebooks
+in this documentation, unfortunately, will not be immediately updated to include these instructions. 
+Any instructions you see below where you query the meta-data can be replaced by appropriate filter and
+selection of a dataframe from the single CSV file. 
 
 ### Select an Interesting Target
 
@@ -316,7 +326,10 @@ temp_urls = map(get_temp_url, data_paths)
 ### Celestial Coordinates of Candidate Events
 ##### GET /v1/coordinates/aca
 
-**Description**: Returns a JSON object that lists the exact RA and DEC coordinates
+**Description**: 
+See the `/v1/aca/meta/all` endpoint in order to download the entire SignalDB table. 
+
+Returns a JSON object that lists the exact RA and DEC coordinates
 for 'Candidate' observations available in the Public SETI database. 
 The structure of the returned JSON object is
 
@@ -369,7 +382,10 @@ events found for that position (`number_of_candidates`).
 ### Meta-data and location of Candidate Events
 ##### GET /v1/aca/meta/{ra}/{dec}
 
-**Description**: Given the RA and DEC celestial coordinates for a position in the sky,
+**Description**: 
+See the `/v1/aca/meta/all` endpoint instead to download the entire SignalDB table.
+
+Given the RA and DEC celestial coordinates for a position in the sky,
 returns a JSON object containing the meta-data and file location of 
 each candidate event for that RA/DEC coordinate. The meta-data are the data found
 in the [SignalDB](https://github.com/ibmjstart/SETI/docs/signaldb.md). 
