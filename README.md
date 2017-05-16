@@ -38,44 +38,29 @@ during observations from 2013 to 2015.
 
 Further updates will provide access to the non-candidate `compamp` files and other ways of retrieving the data.
 
-### Basic Intro to HTTP API
+### Basic Intro to Data Access
 
-Before getting into the details of the [raw signal data analysis](#raw-data-analysis), you can get a peek using just your browser. This is purely for demonstration, however. The [HTTP API](setigopublic.md) is designed to be consumed programmatically. 
-
-#### SignalDB Introduction 
-
-
-##### Important Update
+#### SignalDB  
 
 The new endpoint `/v1/aca/meta/all` will return the entire SignalDB table in a single CSV file.
 You should use this file to select your data of interest. Loading this data into a dataframe will
 make data selection significantly easier and more flexible. Once you've found the subset of data that
-you find interesting, you can then make queries to find the associated raw data files. The example notebooks
-in this documentation, unfortunately, will not be immediately updated to include these instructions. 
-Any instructions you see below where you query the meta-data can be replaced by appropriate filter and
-selection in a dataframe created from the SignalDB CSV file. 
+you find interesting, you can then make queries to find the associated raw data files.  
 
-
-Extraction of the SignalDB rows via the HTTP API are based on locations of objects in the sky.
-
-  1. Find a Celestial Coordinate with data
-    * https://setigopublic.mybluemix.net/v1/coordinates/aca
-    * Returns the number of SignalDB rows for Candidate E.T. signals for each RA/DEC
-    * Select an RA,DEC coordinate  
-      * For example:  RA = 0.03, DEC = 66.306  
-  2. Find meta-data for Candidate E.T. signals from a coordinate
-    * https://setigopublic.mybluemix.net/v1/aca/meta/0.03/66.306
-    * Returns the SignalDB data for the Candidate events. 
+[Please see this Notebook for instructions on how to programmatically download, read and query SignalDB within Spark.](notebooks/all_signaldb.ipynb) 
 
 The SignalDB data includes signal classifications, 
 [metrics such as central frequency, central frequency drift rate, power, signal/noise, etc.](signaldb.md), 
 with which you can already do some interesting visualization and analysis. 
 
+
 #### Raw Data Introduction
+
+Before getting into the details of the [raw signal data analysis](#raw-data-analysis), you can get a peek using just your browser. This is purely for demonstration, however. The [HTTP API](setigopublic.md) is designed to be consumed programmatically. 
 
 In order to get at the raw data, we ask that you first attain an access token. 
 We do this to track usage of the project. This will, for the moment, require you to create a
-30-day free IBM Data Science Experience account. (This will create a Bluemix account for you automatically during this process.) Even after your free trial period ends, you can still access the SETI data with your access-token. 
+30-day free IBM Data Science Experience account. (This will also create a Bluemix account for you automatically during this process.) Even after your free trial period ends, you can still access the SETI data with your access-token. 
 
   1. Get Access Token 
     * https://setigopublic.mybluemix.net/token
@@ -153,8 +138,8 @@ to access the SETI data, saved that data to your IBM Object Storage service, pro
 from the raw SETI data, and extracted some features, which may be used in a machine-learning analysis.
 
 
-  * [Introduction to the HTTP API](notebooks/ibmseti_intro_to_http_api.ipynb) 
-  * [How to store data to your Bluemix Object Store](notebooks/ibmseti_get_data_tutorial.ipynb)
+  * [Introduction to the HTTP API](notebooks/ibmseti_intro_to_http_api_v2_with_all_signaldb.ipynb) 
+  * [How to store data to your Bluemix Object Store](notebooks/ibmseti_get_data_tutorial_v2_with_all_signaldb.ipynb)
   * [Retrieve the data from Object Store and calculate a spectrogram](notebooks/ibmseti_my_first_spectrogram.ipynb)
   * [Retrieve the data from Object Store and calculate features from the spectrogram](notebooks/ibmseti_intro_features.ipynb)
 
