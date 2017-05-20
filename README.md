@@ -65,8 +65,8 @@ We do this to track usage of the project. This will, for the moment, require you
   1. Get Access Token 
     * https://setigopublic.mybluemix.net/token
   2. Get Raw Data temporary URL 
-    * using a `container` and `objectname` returned above
-    * using your `access_token` 
+    * using a `container` and `objectname` found in the SignalDB
+    * and using your `access_token` 
     * Build URL: `https://setigopublic.mybluemix.net/v1/data/url/{container}/{objectname}?access_token={access_token}`
     * Example: 
       * container: `setiCompAmp`
