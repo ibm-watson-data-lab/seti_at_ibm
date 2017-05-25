@@ -154,6 +154,10 @@ Reading these documents will be helpful to analyzing the SETI data.
   * [Brief description of the raw data](rawdata.md)
   * [Science Goals](science_goals.md)
   * [What Is an E.T. Signal?](what_is_an_et_signal.md)
+  * Descriptions of Previous Analysis:
+    * [Simple Features by Dr. Jeff Scargle](http://blog.ibmjstart.net/2015/11/10/signal-classification-powerful-patterns-from-simple-features/)
+    * [Autoencoding by Dr. Francois Luus](https://www.ibm.com/blogs/research/2016/12/machine-learning-on-the-cloud-and-the-search-for-e-t/)
+    * [Stanford CS341 Course work](http://blog.ibmjstart.net/2016/06/29/ibm-stanford-university-team-new-perspective-seti-signal-analytics/)
 
 
 #### Check out SETI:
